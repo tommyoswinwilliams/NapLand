@@ -12,18 +12,29 @@ describe Space do
       
       expect(result.first["name"]).to eq 'My space'
       expect(result.first["description"]).to eq '2 bedrooms'
-      expect(result.first["price"]).to eq 45
-      expect(result.first["available"]).to eq true
+      expect(result.first["price"]).to eq "45"
+      expect(result.first["available"]).to eq "t"
     end
   end
 
-  # describe '.all' do
-  #   it 'shows all spaces' do
-  #     connection = PG.connect(dbname: 'napland_test')
+  describe '.all' do
+    it 'shows all spaces' do
+      connection = PG.connect(dbname: 'napland_test')
 
-  #     connection.exec("INSERT INTO spaces (name, description, price, available) VALUES ('My space', '2 bedrooms', 45, true);")
+      # add the test data
+      space = Space.create(name: 'My new space', description: '3 bedroom', price: 55, available: false)
+      # connection.exec("INSERT INTO spaces (name, description, price, available) VALUES ('My new space', '3 bedrooms', 55, false);")
 
-  #     spaces = Spaces.
-  # end
+      spaces = Space.all
+
+      expect(spaces.length).to eq 1 
+      expect(spaces.first).to be_a Space
+      expect(spaces.first.id).to eq space.id
+      expect(spaces.first.name).to eq space.name
+      expect(spaces.first.description).to eq space.description
+      expect(spaces.first.price).to eq space.price
+      expect(spaces.first.available).to eq space.available
+    end
+  end
 
 end

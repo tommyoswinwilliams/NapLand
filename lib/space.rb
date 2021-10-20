@@ -11,6 +11,18 @@ class Space
     @available = available
   end
 
+  def self.all
+    if ENV['ENVIRONMENT'] == "test"
+      connection = PG.connect(dbname: "napland_test")
+    else
+      connection = PG.connect(dbname: "napland")
+    end
+    result = connection.exec_params("SELECT * FROM spaces;")
+    result.map do |item|
+      Space.new(id: item["id"], name: item["name"], description: item["description"], price: item["price"], available: item["available"])
+    end
+  end
+
   def self.create(name:, description:, price:, available:)
     if ENV['ENVIRONMENT'] == "test"
       connection = PG.connect(dbname: "napland_test")
