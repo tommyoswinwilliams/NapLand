@@ -9,9 +9,5 @@ feature "Creating a space" do
 
     expect(page).to have_content "Your space is saved!"
 
-    # expect(page).to have_content "My space"
-    # expect(page).to have_content "2 bedrooms"
-    # expect(page).to have_content 45
-    # expect(page).to have_content true
   end
 end

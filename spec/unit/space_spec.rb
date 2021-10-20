@@ -19,12 +19,9 @@ describe Space do
 
   describe '.all' do
     it 'shows all spaces' do
-      connection = PG.connect(dbname: 'napland_test')
-
       # add the test data
       space = Space.create(name: 'My new space', description: '3 bedroom', price: 55, available: false)
-      # connection.exec("INSERT INTO spaces (name, description, price, available) VALUES ('My new space', '3 bedrooms', 55, false);")
-
+      
       spaces = Space.all
 
       expect(spaces.length).to eq 1 

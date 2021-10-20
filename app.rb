@@ -19,7 +19,17 @@ class NapLand < Sinatra::Base
   
   post '/spaces' do
     Space.create(name: params[:space_name], description: params[:space_description], price: params[:space_price], available: params[:space_available])
-    redirect '/spaces'
+    redirect '/spaces/confirmation'
+  end
+
+  get '/spaces/confirmation' do
+    erb :'/spaces/confirmation_page'
+  end
+
+  get '/spaces/all_listings' do
+    @all_spaces = Space.all
+    p @all_spaces
+    erb :'/spaces/all_listings'
   end
 
   run! if app_file == $0
