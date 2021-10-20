@@ -8,6 +8,11 @@ describe '.create' do
     result = connection.exec("SELECT * FROM users;")
     expect(result.first['email']).to eq 'test@example.com'
   end
+  it 'hashes the password using BPcrypt' do
+    expect(BCrypt::Password).to receive(:create).with('password123')
+
+    User.create(email: 'test@example.com', password: 'password123')
+  end
 end
 
 describe '.find' do
