@@ -25,6 +25,17 @@ class User
     User.new(id: result[0]['id'], email: result[0]['email'])
   end
 
+  def self.authenticate(email:, password:)
+    if ENV['ENVIRONMENT'] == "test"
+      connection = PG.connect(dbname: 'napland_test')
+    else
+      connection = PG.connect(dbname: 'napland')
+    end
+
+    result = connection.exec_params("SELECT * FROM users WHERE email = $1", [email])
+    User.new(id: result[0]['id'], email: result[0]['email'])
+  end
+
   attr_reader :id, :email
 
   def initialize(id:, email:)
