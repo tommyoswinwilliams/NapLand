@@ -1,9 +1,14 @@
 feature "Viewing all listings" do
+  
   scenario "a user can see all of the spaces" do
-    connection = PG.connect(dbname: "napland_test")
-    connection.exec("INSERT INTO spaces(name, description, price, available) VALUES('My space', '2 bedrooms', 45, true);")
+    visit '/spaces'
+    fill_in :space_name, with: "My space"
+    fill_in :space_description, with: "2 bedrooms"
+    fill_in :space_price, with: 45
+    fill_in :space_available, with: true
+    click_button "Submit"
 
-    visit '/spaces/all_listings'
+    click_button "Show All Listings"
 
     expect(page).to have_content "My space"
     expect(page).to have_content "2 bedrooms"
