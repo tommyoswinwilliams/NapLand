@@ -1,15 +1,19 @@
-require 'Spaces'
+require 'Space'
 
-describe Spaces do
+describe Space do
 
   describe '.create' do
+
     it 'creates new space' do
       space = Space.create(name: 'My space', description: '2 bedrooms', price: 45, available: true)
+      connection = PG.connect(dbname: "napland_test")
 
-      expect(spaces['name']).to eq 'My space'
-      expect(spaces['description']).to eq '2 bedrooms'
-      expect(spaces['price']).to eq 45
-      expect(spaces['available']).to eq true
+      result = connection.query("SELECT * FROM spaces WHERE id=#{space.id};")
+      
+      expect(result.first["name"]).to eq 'My space'
+      expect(result.first["description"]).to eq '2 bedrooms'
+      expect(result.first["price"]).to eq 45
+      expect(result.first["available"]).to eq true
     end
   end
 
