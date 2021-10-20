@@ -1,3 +1,4 @@
+require 'pg'
 require 'bcrypt'
 
 class User
@@ -33,6 +34,7 @@ class User
     end
 
     result = connection.exec_params("SELECT * FROM users WHERE email = $1", [email])
+    return nil unless result.any?
     User.new(id: result[0]['id'], email: result[0]['email'])
   end
 

@@ -21,6 +21,7 @@ require 'simplecov'
 require 'simplecov-console'
 require './lib/user'
 require 'setup_test_database'
+require 'sinatra/flash'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,

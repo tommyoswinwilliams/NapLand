@@ -1,5 +1,7 @@
 require "sinatra/base"
 require "sinatra/reloader"
+require "sinatra/flash"
+require_relative './lib/user'
 
 class NapLand < Sinatra::Base
   # :nocov:
@@ -9,6 +11,7 @@ class NapLand < Sinatra::Base
   # :nocov:
 
   enable :sessions
+  register Sinatra::Flash
 
   get "/test" do
     "Welcome to NapLand!"
@@ -35,8 +38,13 @@ class NapLand < Sinatra::Base
 
   post '/sessions' do
     user = User.authenticate(email: params[:email], password: params[:password])
-    session[:user_id] = user.id
-    redirect('/')
+    if user
+      session[:user_id] = user.id
+      redirect('/')
+    else
+      flash[:notice] = 'Please check your email or password'
+      redirect('/sessions/new')
+    end
   end
 
   run! if app_file == $0
