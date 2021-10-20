@@ -2,16 +2,21 @@ require "sinatra/base"
 require "sinatra/reloader"
 
 class NapLand < Sinatra::Base
+  # :nocov:
   configure :development do
     register Sinatra::Reloader
   end
+  # :nocov:
+
+  enable :sessions
 
   get "/test" do
     "Welcome to NapLand!"
   end
 
   get '/' do
-    "Welcome to NapLand!"
+    @user = User.find(session[:user_id])
+    erb :"index"
   end
 
   get '/users/new' do
@@ -19,7 +24,8 @@ class NapLand < Sinatra::Base
   end
 
   post '/users' do
-    User.create(email: params[:email], password: params[:password])
+    user = User.create(email: params[:email], password: params[:password])
+    session[:user_id] = user.id
     redirect '/'
   end
 
