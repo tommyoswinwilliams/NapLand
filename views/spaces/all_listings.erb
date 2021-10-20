@@ -1,10 +1,10 @@
 <ul>
-  <%@all_spaces.each do |space|%>
+  <% @all_spaces.each do |space|%>
     <li>
-      Name: <% space.name %>
-      Description: <% space.description %>
-      Price: <% space.price %>
-      Available: <% space.available %>
+      Name: <%= space.name %>
+      Description: <%= space.description %>
+      Price: <%= space.price %>
+      Available: <%= space.available %>
     </li>
   <%end%>
 </ul>

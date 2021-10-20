@@ -28,7 +28,6 @@ class NapLand < Sinatra::Base
 
   get '/spaces/all_listings' do
     @all_spaces = Space.all
-    p @all_spaces
     erb :'/spaces/all_listings'
   end
 
