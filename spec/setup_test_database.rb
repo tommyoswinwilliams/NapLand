@@ -1,6 +1,10 @@
+require 'pg'
+
 def setup_test_database
+  p "Setting up test database..."
+
   connection = PG.connect(dbname: 'napland_test')
 
-  # Clean the users table
+  connection.exec("TRUNCATE spaces;")
   connection.exec("TRUNCATE users;")
 end

@@ -1,6 +1,7 @@
 require "sinatra/base"
 require "sinatra/reloader"
 require "sinatra/flash"
+require_relative "./lib/space.rb"
 require_relative './lib/user'
 
 class NapLand < Sinatra::Base
@@ -16,6 +17,23 @@ class NapLand < Sinatra::Base
   get "/test" do
     "Welcome to NapLand!"
   end
+
+  get '/spaces' do
+    erb :'/spaces/new_space'
+  end
+
+  post '/spaces' do
+    Space.create(name: params[:space_name], description: params[:space_description], price: params[:space_price], available_from: params[:space_available_from], available_to: params[:space_available_to])
+    redirect '/spaces/confirmation'
+  end
+
+  get '/spaces/confirmation' do
+    erb :'/spaces/confirmation_page'
+  end
+
+  get '/spaces/all_listings' do
+    @all_spaces = Space.all
+    erb :'/spaces/all_listings'
 
   get '/' do
     @user = User.find(session[:user_id])
