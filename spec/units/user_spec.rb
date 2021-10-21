@@ -40,5 +40,10 @@ describe '.find' do
       user = User.create(email: 'test@example.com', password: 'password123')
       expect(User.authenticate(email: 'nottherightemail@example.com', password: 'password123')).to be_nil
     end
+
+    it 'returns nil with incorrect password' do
+      user = User.create(email: 'test@example.com', password: 'password123')
+      expect(User.authenticate(email: 'test@example.com', password: 'wrongpassword')).to be_nil
+    end
   end
 end
