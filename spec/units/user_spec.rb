@@ -6,7 +6,7 @@ describe '.create' do
 
     connection = PG.connect(dbname: 'napland_test')
     result = connection.exec("SELECT * FROM users;")
-    expect(result.first['email']).to eq 'test@example.com'
+    expect(result.first['email']).to eq user.email
   end
   it 'hashes the password using BPcrypt' do
     expect(BCrypt::Password).to receive(:create).with('password123')
@@ -37,12 +37,12 @@ describe '.find' do
     end
 
     it 'returns nil with incorrect email address' do
-      user = User.create(email: 'test@example.com', password: 'password123')
+      User.create(email: 'test@example.com', password: 'password123')
       expect(User.authenticate(email: 'nottherightemail@example.com', password: 'password123')).to be_nil
     end
 
     it 'returns nil with incorrect password' do
-      user = User.create(email: 'test@example.com', password: 'password123')
+      User.create(email: 'test@example.com', password: 'password123')
       expect(User.authenticate(email: 'test@example.com', password: 'wrongpassword')).to be_nil
     end
   end
