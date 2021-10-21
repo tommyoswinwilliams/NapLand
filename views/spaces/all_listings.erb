@@ -11,6 +11,9 @@ input {padding:13px 40px; text-align:center; font-size:16;}
 </style>
 </head>
 <body>
+<% if @user %>
+<h1>Welcome, <%= @user.email %> </h1>
+<% end %>
 <ul>
   <% @all_spaces.each do |space|%>
     <li>
