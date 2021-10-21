@@ -17,8 +17,13 @@ class NapLand < Sinatra::Base
     erb :'/spaces/new_space'
   end
   
+  # post '/spaces' do
+  #   Space.create(name: params[:space_name], description: params[:space_description], price: params[:space_price], available: params[:space_available])
+  #   redirect '/spaces/confirmation'
+  # end
+
   post '/spaces' do
-    Space.create(name: params[:space_name], description: params[:space_description], price: params[:space_price], available: params[:space_available])
+    Space.create(name: params[:space_name], description: params[:space_description], price: params[:space_price], available_from: params[:space_available_from], available_to: params[:space_available_to])
     redirect '/spaces/confirmation'
   end
 
