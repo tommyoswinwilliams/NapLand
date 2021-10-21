@@ -1,19 +1,32 @@
-<h2>
-  <%= flash[:notice] %>
-</h2>
-<% if @user %>
-  <h1>Welcome, <%= @user.email %> </h1>
-  <form action="/sessions/destroy" method="post">
-    <input type="submit" value="Sign out" />
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/stylesheets/application.css">
+    <title>NapLand</title>
+</head>
+<body>
+  <div class="nav-bar">
+    <% if @user %>
+      <p class="welcome-message">Welcome, <%= @user.email %> </p>
+      <form action="/sessions/destroy" method="post">
+        <input type="submit" value="Sign out" class="auth-button" />
+      </form>
+    <% else%>
+      <form action="/sessions/new" method="get">
+      <input type="submit" value="Log in" class="auth-button"/>
+    </form>
+    <% end %>
+  </div>
+  <h1> NapLand </h1>
+  <h2>
+    <%= flash[:notice] %>
+  </h2>
+  <form action="/users" method="post">
+      <input type="email" name="email" placeholder="Email" />
+      <input type="password" name="password" placeholder="Password"/>
+      <input type="submit" value="Sign up" />
   </form>
-<% else%>
-  <form action="/sessions/new" method="get">
-  <input type="submit" value="Log in" />
-</form>
-<% end %>
 
-<form action="/users" method="post">
-    <input type="email" name="email" />
-    <input type="password" name="password" />
-    <input type="submit" value="Sign up" />
-</form>
+  
+</body>
+</html>

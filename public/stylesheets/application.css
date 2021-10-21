@@ -1,0 +1,42 @@
+body {
+  font-family:'Trebuchet MS', sans-serif; 
+  text-align:center;
+}
+
+.nav-bar {
+  height: 80px;
+}
+
+.welcome-message {
+  text-align: left;
+}
+
+.auth-button {
+  float: right;
+  margin-right: 20px;
+}
+
+h1 {
+  color:red; 
+  padding:75px; 
+  font-size:100px
+}
+
+h2 {
+  padding:0px;
+}
+
+.button {
+  background-color:black; 
+  border:none; 
+  color:white; 
+  padding:15px 32px; 
+  text-align:center; 
+  font-size:18;
+}
+
+input {
+  padding: 13px 40px; 
+  text-align: center; 
+  font-size: 14px;
+}

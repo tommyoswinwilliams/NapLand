@@ -1,9 +1,18 @@
-<h2>
-  <%= flash[:notice] %>
-</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/stylesheets/application.css">
+</head>
+<body>
+  <h1> NapLand </h1>
+  <h2>
+    <%= flash[:notice] %>
+  </h2>
 
-<form action="/sessions" method="post">
-  <input type="email" name="email" />
-  <input type="password" name="password" />
-  <input type="submit" value="Sign in" />
-</form>
+  <form action="/sessions" method="post">
+    <input type="email" name="email" />
+    <input type="password" name="password" />
+    <input type="submit" value="Sign in" />
+  </form>
+</body>
+</html>
