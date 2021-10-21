@@ -16,4 +16,11 @@ feature "Viewing all listings" do
     expect(page).to have_content '2021-11-11'
     expect(page).to have_content '2021-11-11'
   end
+
+  scenario "a user can navigate to the create a space page" do
+    visit '/spaces'
+
+    click_button "Create Space"
+    expect(page).to have_content "Please enter the details of your space:"
+  end
 end

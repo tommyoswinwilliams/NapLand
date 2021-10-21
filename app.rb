@@ -60,7 +60,7 @@ class NapLand < Sinatra::Base
     user = User.authenticate(email: params[:email], password: params[:password])
     if user
       session[:user_id] = user.id
-      redirect('/')
+      redirect('/spaces')
     else
       flash[:notice] = 'Please check your email or password'
       redirect('/sessions/new')
