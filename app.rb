@@ -37,6 +37,11 @@ class NapLand < Sinatra::Base
     erb :'/spaces/all_listings'
   end
 
+  get '/spaces/available_listings' do
+    @available_spaces = Space.show_available(date_from: params[:date_from], date_to: params[:date_to])
+    erb :'/spaces/available_listings'
+  end
+
   get '/' do
     @user = User.find(session[:user_id])
     erb :"index"

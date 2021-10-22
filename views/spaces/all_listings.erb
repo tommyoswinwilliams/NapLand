@@ -15,11 +15,20 @@
     <p class="welcome-message">Welcome, <%= @user.email %> </h1>
     <% end %>
   </div>
-  <h1 id="listings-title"> NapLand </h1>
-  <h2 id="listings-subtitle"> Let's find a place for you </h2>
+  <h1> NapLand </h1>
+  <h2> Let's find a place for you </h2>
   <h2 id="request-confirmation">
     <%= flash[:notice] %>
   </h2>
+  <form action="/spaces/new" method="GET">
+    <input class="button" type="submit" value="List a Space">
+  </form>
+  <br>
+  <form action='/spaces/available_listings' method='get'>
+    <input type="text" name="date_from" placeholder="Available from (YYYY-MM-DD)">
+    <input type="text" name="date_to" placeholder="Available to (YYYY-MM-DD)">
+    <input class="button" type="submit" value="See Available Spaces" />
+  </form>
   <ul>
     <% @all_spaces.each do |space|%>
     <div id="<%= space.id %>" class=listing >
@@ -33,12 +42,8 @@
         <input type="submit" value="Request space" />
       </form>
     </div>
-    
   <%end%>
   </ul>
-  <form action="/spaces/new" method="GET">
-    <input type="submit" value="Create Space">
-  </form>
 </body>
 </html>
 

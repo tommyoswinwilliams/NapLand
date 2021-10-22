@@ -20,7 +20,7 @@ feature "Viewing all listings" do
   scenario "a user can navigate to the create a space page" do
     visit '/spaces'
 
-    click_button "Create Space"
+    click_button "List a Space"
     expect(page).to have_content "Please enter the details of your space:"
   end
 end
