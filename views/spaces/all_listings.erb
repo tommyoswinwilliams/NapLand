@@ -19,13 +19,18 @@
   <h2 id="listings-subtitle"> Let's find a place for you </h2>
   <ul>
     <% @all_spaces.each do |space|%>
-    <div class=listing >
-      <span class=listing-name><%= space.name %></span>
+    <div id="<%= space.id %>" class=listing >
+      <span class=listing-name> <a href="/spaces/<%=space.id%>"> <%= space.name %></a> </span>
       <%= space.description %>
       Price: <%= space.price %>
       Available from: <%= space.available_from %>
       Available to: <%= space.available_to %>
+    
+      <form action="/spaces/<%= space.id %>/" method="POST"
+        <input type="submit" value="Request space" />
+      </form>
     </div>
+    
   <%end%>
   </ul>
   <form action="/spaces/new" method="GET">

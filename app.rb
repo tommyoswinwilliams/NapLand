@@ -73,6 +73,11 @@ class NapLand < Sinatra::Base
     redirect('/')
   end
 
+  get 'spaces/:id' do
+    @space_id = params[:id]
+    erb :'spaces/listing'
+  end
+
   run! if app_file == $0
 
 end
