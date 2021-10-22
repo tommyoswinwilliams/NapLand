@@ -44,11 +44,11 @@ describe Space do
 
       result = Space.find(id: space.id)
 
-      expect(result.first.name).to eq space.name
-      expect(result.first.description).to eq space.description
-      expect(result.first.price).to eq space.price
-      expect(result.first.available_from).to eq space.available_from
-      expect(result.first.available_to).to eq space.available_to
+      expect(result.name).to eq space.name
+      expect(result.description).to eq space.description
+      expect(result.price).to eq space.price
+      expect(result.available_from).to eq space.available_from
+      expect(result.available_to).to eq space.available_to
     end
   end
 
