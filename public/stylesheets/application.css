@@ -18,13 +18,15 @@ body {
 
 h1 {
   color:red; 
-  padding:75px; 
-  font-size:100px
+  padding:60px 0px 0px 0px; 
+  font-size:100px;
+  margin-bottom:0;
 }
 
 h2 {
-  padding:0px;
-}
+  padding:0px 0px 40px 0px; 
+  font-size:30px; 
+  margin-top:0}
 
 .button {
   background-color:black; 
@@ -40,3 +42,20 @@ input {
   text-align: center; 
   font-size: 14px;
 }
+
+.listing {
+  border:1px; 
+  border-style:solid; 
+  border-color:#B8B8B8; 
+  padding: 20px; 
+  width:50%; 
+  margin:1% 24% 1% 24%}
+
+
+.listing_name {
+  font-size:150%; 
+  font-weight: bold; 
+  color:grey; 
+  text-align: left;
+}
+
