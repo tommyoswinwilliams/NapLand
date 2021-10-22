@@ -61,3 +61,6 @@ input {
   text-align: left;
 }
 
+#request-confirmation {
+  color: green;
+}

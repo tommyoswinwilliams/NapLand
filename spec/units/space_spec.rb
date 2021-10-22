@@ -37,6 +37,21 @@ describe Space do
     end
   end
 
+
+  describe ".find" do
+    it "finds a space" do
+      space = Space.create(name: 'My space', description: '2 bedrooms', price: 45, available_from: '2021-11-11', available_to: '2021-12-11')
+
+      result = Space.find(id: space.id)
+
+      expect(result.first.name).to eq space.name
+      expect(result.first.description).to eq space.description
+      expect(result.first.price).to eq space.price
+      expect(result.first.available_from).to eq space.available_from
+      expect(result.first.available_to).to eq space.available_to
+    end
+  end
+
   describe '.show_available' do
     it 'shows only available spaces' do
       space = Space.create(name: 'My new space', description: '3 bedroom', price: 55, available_from: '2021-11-11', available_to: '2021-12-11')
