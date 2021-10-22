@@ -20,13 +20,13 @@
   <ul>
     <% @all_spaces.each do |space|%>
     <div id="<%= space.id %>" class=listing >
-      <span class=listing-name> <a href="/spaces/<%=space.id%>"> <%= space.name %></a> </span>
+      <span class=listing-name> <%= space.name %></span>
       <%= space.description %>
       Price: <%= space.price %>
       Available from: <%= space.available_from %>
       Available to: <%= space.available_to %>
     
-      <form action="/spaces/<%= space.id %>/" method="POST"
+      <form action="/spaces/<%= space.id %>/" method="POST">
         <input type="submit" value="Request space" />
       </form>
     </div>

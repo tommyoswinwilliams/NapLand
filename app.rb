@@ -74,7 +74,8 @@ class NapLand < Sinatra::Base
   end
 
   get 'spaces/:id' do
-    @space_id = params[:id]
+    # @space_id = params[:id]
+    @space = Space.find(id: params[:id])
     erb :'spaces/listing'
   end
 
