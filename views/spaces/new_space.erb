@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-body {font-family:'Trebuchet MS', sans-serif; text-align:center;}
-h1 {color:red; padding:75px; font-size:100px}
-h2 {padding:0px;}
-/* h3 {padding:50px;} */
-.button {background-color:black; border:none; color:white; padding:15px 32px; text-align:center; font-size:18}
-input {padding:13px 40px; text-align:center; font-size:16;}
-</style>
+    <link rel="stylesheet" href="/stylesheets/application.css">
+    <title>Create a Space</title>
 </head>
 <body>
-<h1> NapLand <h2>
+<h1> NapLand </h1>
 <h2> Please enter the details of your space: </h2>
 
 <form action='/spaces' method='post'>
@@ -20,7 +14,7 @@ input {padding:13px 40px; text-align:center; font-size:16;}
     <input type="text" name="space_price" placeholder="Price">
     <input type="text" name="space_available_from" placeholder="YYYY-MM-DD">
     <input type="text" name="space_available_to" placeholder="YYYY-MM-DD">
-    <input class=button type="submit" value="Submit" />
+    <input class="button" type="submit" value="Submit" />
 </form>
 </body>
 </html>

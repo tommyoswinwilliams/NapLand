@@ -18,7 +18,7 @@ class NapLand < Sinatra::Base
     "Welcome to NapLand!"
   end
 
-  get '/spaces' do
+  get '/spaces/new' do
     erb :'/spaces/new_space'
   end
 
@@ -31,9 +31,11 @@ class NapLand < Sinatra::Base
     erb :'/spaces/confirmation_page'
   end
 
-  get '/spaces/all_listings' do
+  get '/spaces' do
     @all_spaces = Space.all
+    @user = User.find(session[:user_id])
     erb :'/spaces/all_listings'
+  end
 
   get '/' do
     @user = User.find(session[:user_id])
@@ -47,7 +49,7 @@ class NapLand < Sinatra::Base
   post '/users' do
     user = User.create(email: params[:email], password: params[:password])
     session[:user_id] = user.id
-    redirect '/'
+    redirect '/spaces'
   end
 
   get '/sessions/new' do
@@ -58,7 +60,7 @@ class NapLand < Sinatra::Base
     user = User.authenticate(email: params[:email], password: params[:password])
     if user
       session[:user_id] = user.id
-      redirect('/')
+      redirect('/spaces')
     else
       flash[:notice] = 'Please check your email or password'
       redirect('/sessions/new')

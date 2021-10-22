@@ -1,7 +1,6 @@
 feature "Viewing all listings" do
-  
   scenario "a user can see all of the spaces" do
-    visit '/spaces'
+    visit '/spaces/new'
     fill_in :space_name, with: "My space"
     fill_in :space_description, with: "2 bedrooms"
     fill_in :space_price, with: 45
@@ -16,5 +15,12 @@ feature "Viewing all listings" do
     expect(page).to have_content 45
     expect(page).to have_content '2021-11-11'
     expect(page).to have_content '2021-11-11'
+  end
+
+  scenario "a user can navigate to the create a space page" do
+    visit '/spaces'
+
+    click_button "Create Space"
+    expect(page).to have_content "Please enter the details of your space:"
   end
 end
