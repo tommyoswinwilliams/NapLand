@@ -8,18 +8,27 @@
 <h2> Let's find a place for you </h2>
 
 <form action='/spaces/available_listings' method='get'>
-    <input type="text" name="date_from" placeholder="Available from (YYYY-MM-DD)">
-    <input type="text" name="date_to" placeholder="Available to (YYYY-MM-DD)">
+    <input type="text" name="date_from" placeholder="From (YYYY-MM-DD)">
+    <input type="text" name="date_to" placeholder="To (YYYY-MM-DD)">
     <input class="button" type="submit" value="List Spaces"/>
 </form>
 <ul>
   <% @available_spaces.each do |space|%>
     <div class=listing >
         <span class=listing_name><%= space.name %><br></span> 
+        <br>
         <%= space.description %>
+        <br>
         Price: <%= space.price %>
+        <br>
         Available from: <%= space.available_from %>
+        <br>
         Available to: <%= space.available_to %>
+        <br>
+        <br>
+        <form action="/spaces/<%= space.id %>" method="POST">
+        <input style="padding 10px" type="submit" value="Request space" />
+      </form>
     </div>
   <%end%>
 </ul>
