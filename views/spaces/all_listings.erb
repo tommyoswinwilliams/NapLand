@@ -15,21 +15,26 @@
     <p class="welcome-message">Welcome, <%= @user.email %> </h1>
     <% end %>
   </div>
-  <h1 id="listings-title"> NapLand </h1>
-  <h2 id="listings-subtitle"> Let's find a place for you </h2>
+  <h1> NapLand </h1>
+  <h2> Let's find a place for you </h2>
+  <form action='/spaces/available_listings' method='get'>
+    <input type="text" name="date_from" placeholder="Available from (YYYY-MM-DD)">
+    <input type="text" name="date_to" placeholder="Available to (YYYY-MM-DD)">
+    <input class="button" type="submit" value="List Spaces" />
+  </form>
   <ul>
     <% @all_spaces.each do |space|%>
-    <div class=listing >
-      <span class=listing-name><%= space.name %></span>
-      <%= space.description %>
-      Price: <%= space.price %>
-      Available from: <%= space.available_from %>
-      Available to: <%= space.available_to %>
-    </div>
-  <%end%>
+      <div class=listing >
+        <span class=listing_name><%= space.name %><br></span> 
+        <%= space.description %>
+        Price: <%= space.price %>
+        Available from: <%= space.available_from %>
+        Available to: <%= space.available_to %>
+      </div>
+    <%end%>
   </ul>
   <form action="/spaces/new" method="GET">
-    <input type="submit" value="Create Space">
+    <input class="button" type="submit" value="Create Space">
   </form>
 </body>
 </html>
