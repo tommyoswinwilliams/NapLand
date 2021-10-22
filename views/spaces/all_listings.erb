@@ -15,8 +15,8 @@
     <p class="welcome-message">Welcome, <%= @user.email %> </h1>
     <% end %>
   </div>
-  <h1> NapLand </h1>
-  <h2> Let's find a place for you </h2>
+  <h1 style="margin-bottom:0;"> NapLand </h1>
+  <h2 style="padding:0px 0px 40px 0px; font-size:30px; margin-top:0;"> Let's find a place for you </h2>
   <h2 id="request-confirmation">
     <%= flash[:notice] %>
   </h2>
@@ -29,17 +29,20 @@
     <input type="text" name="date_to" placeholder="To (YYYY-MM-DD)">
     <input class="button" type="submit" value="See Available Spaces" />
   </form>
+  <br>
   <ul>
     <% @all_spaces.each do |space|%>
     <div id="<%= space.id %>" class=listing >
       <span class=listing_name> <%= space.name %><br></span>
+      <br>
       <%= space.description %>
       Price: £<%= space.price %>
       Available from: <%= space.available_from %>
       Available to: <%= space.available_to %>
-    
+      <br>
+      <br>
       <form action="/spaces/<%= space.id %>" method="POST">
-        <input type="submit" value="Request space" />
+        <input class="secondary-button" type="submit" value="Request space" />
       </form>
     </div>
   <%end%>

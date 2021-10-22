@@ -16,10 +16,18 @@
   <% @available_spaces.each do |space|%>
     <div class=listing >
         <span class=listing_name><%= space.name %><br></span> 
+        <br>
         <%= space.description %>
+        <br>
         Price: £<%= space.price %>
         Available from: <%= space.available_from %>
+        <br>
         Available to: <%= space.available_to %>
+        <br>
+        <br>
+        <form action="/spaces/<%= space.id %>" method="POST">
+        <input style="padding 10px" type="submit" value="Request space" />
+      </form>
     </div>
   <%end%>
 </ul>

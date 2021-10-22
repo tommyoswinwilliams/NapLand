@@ -38,6 +38,12 @@ h2 {
   font-size:18;
 }
 
+.secondary-button {
+  border:none; 
+  color:white; 
+  background-color:#A9A9A9
+}
+
 input {
   padding: 13px 40px; 
   text-align: center; 
@@ -54,9 +60,9 @@ input {
 
 
 .listing_name {
-  font-size:150%; 
+  font-size:160%; 
   font-weight: bold; 
-  color:grey; 
+  color:#303030; 
   text-align: left;
 }
 
