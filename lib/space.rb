@@ -52,8 +52,6 @@ class Space
       connection = PG.connect(dbname: "napland")
     end
     result = connection.exec_params("SELECT * FROM spaces WHERE id=#{id};")
-    result.map do |item|
-      Space.new(id: item["id"], name: item["name"], description: item["description"], price: item["price"], available_from: item["available_from"], available_to: item["available_to"])
-    end
+    Space.new(id: result[0]["id"], name: result[0]["name"], description: result[0]["description"], price: result[0]["price"], available_from: result[0]["available_from"], available_to: result[0]["available_to"])
   end
 end

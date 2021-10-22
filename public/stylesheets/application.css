@@ -66,3 +66,7 @@ input {
   text-align: center; 
   font-size: 14px;
 }
+
+#request-confirmation {
+  color: green;
+}

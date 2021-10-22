@@ -73,8 +73,7 @@ class NapLand < Sinatra::Base
     redirect('/')
   end
 
-  get 'spaces/:id' do
-    # @space_id = params[:id]
+  post '/spaces/:id' do
     @space = Space.find(id: params[:id])
     erb :'spaces/listing'
   end
