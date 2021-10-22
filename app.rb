@@ -77,6 +77,11 @@ class NapLand < Sinatra::Base
     @space_id = params[:id]
     erb :'spaces/listing'
   end
+  
+  post '/requests' do
+    flash[:notice] = 'Your request has been made.'
+    redirect('/spaces')
+  end
 
   run! if app_file == $0
 
