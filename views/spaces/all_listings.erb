@@ -25,16 +25,16 @@
   </form>
   <br>
   <form action='/spaces/available_listings' method='get'>
-    <input type="text" name="date_from" placeholder="Available from (YYYY-MM-DD)">
-    <input type="text" name="date_to" placeholder="Available to (YYYY-MM-DD)">
+    <input type="text" name="date_from" placeholder="From (YYYY-MM-DD)">
+    <input type="text" name="date_to" placeholder="To (YYYY-MM-DD)">
     <input class="button" type="submit" value="See Available Spaces" />
   </form>
   <ul>
     <% @all_spaces.each do |space|%>
     <div id="<%= space.id %>" class=listing >
-      <span class=listing-name> <%= space.name %></span>
+      <span class=listing_name> <%= space.name %><br></span>
       <%= space.description %>
-      Price: <%= space.price %>
+      Price: £<%= space.price %>
       Available from: <%= space.available_from %>
       Available to: <%= space.available_to %>
     
