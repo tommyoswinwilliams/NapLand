@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-body {font-family:'Trebuchet MS', sans-serif; text-align:center;}
-h1 {color:red; padding:75px; font-size:100px}
-h2 {padding:0px;}
-/* h3 {padding:50px;} */
-.button {background-color:black; border:none; color:white; padding:15px 32px; text-align:center; font-size:18}
-input {padding:13px 40px; text-align:center; font-size:16;}
-</style>
+    <link rel="stylesheet" href="/stylesheets/application.css">
 </head>
 <body>
-  <% if @user %>
-  <form action="/sessions/destroy" method="post">
-    <input type="submit" value="Sign out" />
-  </form>
-  <% end %>
+  <div class="nav-bar">
+    <% if @user %>
+    <form action="/sessions/destroy" method="post">
+      <input type="submit" value="Sign out" class="auth-button" />
+    </form>
+    <% end %>
 
-  <% if @user %>
-  <h1>Welcome, <%= @user.email %> </h1>
-  <% end %>
+    <% if @user %>
+    <p class="welcome-message">Welcome, <%= @user.email %> </h1>
+    <% end %>
+  </div>
+  <h1> NapLand </h1>
+  
   <ul>
     <% @all_spaces.each do |space|%>
       <li>
